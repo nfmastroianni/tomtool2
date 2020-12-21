@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta charset="utf-8" />
+    <title>Google Picker Example</title>
+    <!-- Compiled and minified CSS -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css"
+    />
+    <link
+      href="https://fonts.googleapis.com/icon?family=Material+Icons"
+      rel="stylesheet"
+    />
+    <script type="text/javascript">
+      // IMPORTANT: Replace the value for DEVELOPER_KEY with the API key obtained
+      // from the Google Developers Console.
+      var DEVELOPER_KEY;
+      var DIALOG_DIMENSIONS = { width: 900, height: 500 };
+      var pickerApiLoaded = false;
+
+      /**
+       * Loads the Google Picker API.
+       */
+      function onApiLoad() {
+        google.script.run
+          .withSuccessHandler(function (e) {
+            DEVELOPER_KEY = e;
+            pickIt();
+          })
+          .getDeveloperKey();
+      }
+
+      function pickIt() {
+        gapi.load("picker", {
+          callback: function () {
+            pickerApiLoaded = true;
+            google.script.run
+              .withSuccessHandler(createPicker)
+              .withFailureHandler(showError)
+              .getOAuthToken();
+          },
+        });
+      }
+
+      /**
+       * Gets the user's OAuth 2.0 access token from the server-side script so that
+       * it can be passed to Picker. This technique keeps Picker from needing to
+       * show its own authorization dialog, but is only possible if the OAuth scope
+       * that Picker needs is available in Apps Script. Otherwise, your Picker code
+       * will need to declare its own OAuth scopes.
+       */
+      function getOAuthToken() {}
+
+      /**
+       * Creates a Picker that can access the user's spreadsheets. This function
+       * uses advanced options to hide the Picker's left navigation panel and
+       * default title bar.
+       *
+       * @param {string} token An OAuth 2.0 access token that lets Picker access the
+       *     file type specified in the addView call.
+       */
+      function createPicker(token) {
+        if (pickerApiLoaded && token) {
+          // var DocsUploadView = new google.picker.DocsUploadView();
+          // DocsUploadView.setIncludeFolders(true);
+
+          var DocsView = new google.picker.DocsView();
+          DocsView.setMimeTypes("application/vnd.google-apps.folder");
+          //DocsView.setEnableDrives(true);
+          DocsView.setSelectFolderEnabled(true);
+          DocsView.setIncludeFolders(true);
+          DocsView.setMode(google.picker.DocsViewMode.LIST);
+          DocsView.setParent("root");
+          var picker = new google.picker.PickerBuilder()
+            // Instruct Picker to display only spreadsheets in Drive. For other
+            // views, see https://developers.google.com/picker/docs/#otherviews
+            .addView(DocsView)
+            .addView(google.picker.ViewId.FOLDERS)
+            // Hide the navigation panel so that Picker fills more of the dialog.
+            .enableFeature(google.picker.Feature.NAV_HIDDEN)
+            //.enableFeature(google.picker.Feature.MINE_ONLY)
+            .enableFeature(google.picker.Feature.SUPPORT_DRIVES)
+            // Hide the title bar since an Apps Script dialog already has a title.
+            .hideTitleBar()
+            .setOAuthToken(token)
+            .setDeveloperKey(DEVELOPER_KEY)
+            .setCallback(pickerCallback)
+            .setOrigin(google.script.host.origin)
+            // Instruct Picker to fill the dialog, minus 2 pixels for the border.
+            .setSize(
+              DIALOG_DIMENSIONS.width - 10,
+              DIALOG_DIMENSIONS.height - 10
+            )
+            .build();
+          picker.setVisible(true);
+        } else {
+          showError("Unable to load the file picker.");
+        }
+      }
+
+      /**
+       * A callback function that extracts the chosen document's metadata from the
+       * response object. For details on the response object, see
+       * https://developers.google.com/picker/docs/result
+       *
+       * @param {object} data The response object.
+       */
+      function pickerCallback(data) {
+        var action = data[google.picker.Response.ACTION];
+        if (action == google.picker.Action.PICKED) {
+          var folderID = data["docs"][0].id;
+          var pl = document.querySelector(".progress");
+          var hangOn = document.getElementById("hangOn");
+          hangOn.classList.remove("hide");
+          pl.classList.remove("hide");
+          google.script.run
+            .withSuccessHandler(function (e) {
+              document.getElementById("result").innerHTML =
+                '<h4>Click the Button Bellow to View Your Reports</h4> <br><a href="' +
+                data["docs"][0].url +
+                '" target="_blank" class="waves-effect waves-light btn-floating btn-large green darken-4 pulse"><i class="material-icons left">folder</i></a>';
+              M.AutoInit();
+              pl.classList.add("hide");
+              hangOn.classList.add("hide");
+            })
+            .exportSeparateSheets(folderID);
+        } else if (action == google.picker.Action.CANCEL) {
+          google.script.host.close();
+        }
+      }
+
+      function closePicker() {
+        google.script.host.close();
+      }
+
+      /**
+       * Displays an error message within the #result element.
+       *
+       * @param {string} message The error message to display.
+       */
+      function showError(message) {
+        document.getElementById("result").innerHTML = "Error: " + message;
+      }
+    </script>
+  </head>
+  <body>
+    <div id="result" class="center-align">
+      <p id="hangOn" class="hide">Hang on while we prepare your PDFs...</p>
+      <div class="progress hide">
+        <div class="indeterminate"></div>
+      </div>
+    </div>
+
+    <!-- The Google API Loader script. -->
+    <script
+      type="text/javascript"
+      src="https://apis.google.com/js/api.js?onload=onApiLoad"
+    ></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+    <script>
+      M.AutoInit();
+    </script>
+  </body>
+</html>
