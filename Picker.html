@@ -21,6 +21,8 @@
 
       /**
        * Loads the Google Picker API.
+       * Grabs and returns the keys from the script properties
+       * Sets a global variable for the key
        */
       function onApiLoad() {
         google.script.run
@@ -30,7 +32,9 @@
           })
           .getDeveloperKey();
       }
-
+      /**
+       * Authorizes the Google Drive Picker
+       */
       function pickIt() {
         gapi.load("picker", {
           callback: function () {

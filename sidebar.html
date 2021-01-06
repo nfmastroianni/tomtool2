@@ -1,112 +1,146 @@
 <!DOCTYPE html>
 <html lang="en">
-    <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>ToM Tool 2</title>
-        <!-- Compiled and minified CSS -->
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
-        <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-    </head>
-    <body>
-        <ul class="collapsible">
-            <li id="step1" class="active">
-                <div class="collapsible-header"><i class="material-icons">filter_1</i>Step 1: Prepare the Document</div>
-                <div class="collapsible-body">
-                    <a id="prepare" class="waves-effect waves-light btn green darken-4"><i class="material-icons left">done</i>Prepare Document</a>
-                  </div>    
-            </li>
-            <li id="step2">
-              <div class="collapsible-header"><i class="material-icons">filter_2</i>Step 2: Select a Grade Level</div>
-              <div class="collapsible-body">
-                <div class="input-field">
-                  <select id="gradeSelect">
-                    <option value="" disabled selected>Choose your option</option>
-                    <option value="3">3 year olds</option>
-                    <option value="4">4 year olds</option>
-                    <option value="Mixed">Mixed</option>
-                  </select>
-                  <label>Select a Grade Level</label>
-                </div>
-                <a id="generateBtn" class="waves-effect waves-light btn green darken-4 disabled"><i class="material-icons left">done</i>Generate Reports</a>  
-              </div>
-            </li>
-            <li id="step3">
-              <div class="collapsible-header"><i class="material-icons">filter_3</i>Step 3: Print</div>
-              <div class="collapsible-body">
-                <div class="row">
-                  <div class="col s12">
-                    <p>Save each student's report to a folder you select: Click Save to Folder</p>
-                    <a id="exportPDFs" class="waves-effect waves-light btn-small green darken-4"><i class="material-icons left">folder</i>Save to Folder</a>
-                  </div>
-                </div>
-                <p>Close this tool and print your reports OR click "Restart" to try again.</p>
-                <div class="row">
-                  <div class="col s6">
-                    <a id="closeSidebar" class="waves-effect waves-light btn green darken-4">Close</a>
-                  </div>
-                  <div class="col s6">
-                    <a id="restart" class="waves-effect waves-light btn red">Restart</a>
-                  </div>
-                </div>
-              </div>
-            </li>
-          </ul>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>ToM Tool 2</title>
+    <!-- Compiled and minified CSS -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css"
+    />
+    <link
+      href="https://fonts.googleapis.com/icon?family=Material+Icons"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <ul class="collapsible">
+      <li id="step1" class="active">
+        <div class="collapsible-header">
+          <i class="material-icons">filter_1</i>Step 1: Prepare the Document
+        </div>
+        <div class="collapsible-body">
+          <a id="prepare" class="waves-effect waves-light btn green darken-4"
+            ><i class="material-icons left">done</i>Prepare Document</a
+          >
+        </div>
+      </li>
+      <li id="step2">
+        <div class="collapsible-header">
+          <i class="material-icons">filter_2</i>Step 2: Select a Grade Level
+        </div>
+        <div class="collapsible-body">
+          <div class="input-field">
+            <select id="gradeSelect">
+              <option value="" disabled selected>Choose your option</option>
+              <option value="3">3 year olds</option>
+              <option value="4">4 year olds</option>
+              <option value="Mixed">Mixed</option>
+            </select>
+            <label>Select a Grade Level</label>
+          </div>
+          <a
+            id="generateBtn"
+            class="waves-effect waves-light btn green darken-4 disabled"
+            ><i class="material-icons left">done</i>Generate Reports</a
+          >
+        </div>
+      </li>
+      <li id="step3">
+        <div class="collapsible-header">
+          <i class="material-icons">filter_3</i>Step 3: Print
+        </div>
+        <div class="collapsible-body">
+          <div class="row">
+            <div class="col s12">
+              <p>
+                Save each student's report to a folder you select: Click Save to
+                Folder
+              </p>
+              <a
+                id="exportPDFs"
+                class="waves-effect waves-light btn-small green darken-4"
+                ><i class="material-icons left">folder</i>Save to Folder</a
+              >
+            </div>
+          </div>
+          <p>
+            Close this tool and print your reports OR click "Restart" to try
+            again.
+          </p>
+          <div class="row">
+            <div class="col s6">
+              <a
+                id="closeSidebar"
+                class="waves-effect waves-light btn green darken-4"
+                >Close</a
+              >
+            </div>
+            <div class="col s6">
+              <a id="restart" class="waves-effect waves-light btn red"
+                >Restart</a
+              >
+            </div>
+          </div>
+        </div>
+      </li>
+    </ul>
 
-        <!-- Compiled and minified JavaScript -->
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
-        <script>
-              M.AutoInit();
-              var prepareBtn = document.querySelector("#prepare");
-              var rs = document.getElementById("restart").addEventListener("click", function() {
-                google.script.run
-                .withSuccessHandler(function(){
-
-                })
-                .resetSidebar();
-              })
-              var cl = document.getElementById("closeSidebar").addEventListener("click", function() {
-                google.script.host.close();
-              });
-              prepareBtn.addEventListener('click', function(e) {
-                  prepareBtn.classList.add("disabled");
-                  google.script.run
-                  .withSuccessHandler(function(e) {
-                    var steps = document.querySelector(".collapsible");
-                    var instance = M.Collapsible.getInstance(steps);
-                    instance.close(0);
-                    instance.open(1);
-                  })
-                  .prepareDocument();
-              });
-              var grLevel = document.getElementById("gradeSelect");
-              var genBtn = document.querySelector("#generateBtn");
-              var expBtn = document.getElementById("exportPDFs");
-              grLevel.addEventListener('change', function(e) {
-                if(e.target.value != "") {
-                  genBtn.classList.remove('disabled');
-                }
-              });
-              genBtn.addEventListener('click', function(){
-                genBtn.classList.add('disabled');
-                google.script.run
-                .withSuccessHandler(function(e){
-                  M.toast({html: 'Reports Created. Proceed to next step.'})
-                  var steps = document.querySelector(".collapsible");
-                  var instance = M.Collapsible.getInstance(steps);
-                  instance.close(1);
-                  instance.open(2);
-                })
-                .generateReports(grLevel.value);
-              });
-              expBtn.addEventListener('click', function(){
-                google.script.run
-                .withSuccessHandler(function() {
-
-                })
-                .showPicker();
-              })
-        </script>
-    </body>
-    
+    <!-- Compiled and minified JavaScript -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+    <script>
+      // Initials all the Materialze JS Elements
+      M.AutoInit();
+      // Set event listeners to buttons to run functions on click
+      var prepareBtn = document.querySelector("#prepare");
+      var rs = document
+        .getElementById("restart")
+        .addEventListener("click", function () {
+          google.script.run.withSuccessHandler(function () {}).resetSidebar();
+        });
+      var cl = document
+        .getElementById("closeSidebar")
+        .addEventListener("click", function () {
+          google.script.host.close();
+        });
+      prepareBtn.addEventListener("click", function (e) {
+        prepareBtn.classList.add("disabled");
+        google.script.run
+          .withSuccessHandler(function (e) {
+            var steps = document.querySelector(".collapsible");
+            var instance = M.Collapsible.getInstance(steps);
+            instance.close(0);
+            instance.open(1);
+          })
+          .prepareDocument();
+      });
+      // Set variables based on user selections
+      var grLevel = document.getElementById("gradeSelect");
+      var genBtn = document.querySelector("#generateBtn");
+      var expBtn = document.getElementById("exportPDFs");
+      // Listen for change in grade level selection and activate the generate button
+      grLevel.addEventListener("change", function (e) {
+        if (e.target.value != "") {
+          genBtn.classList.remove("disabled");
+        }
+      });
+      // add more event listeners to buttons
+      genBtn.addEventListener("click", function () {
+        genBtn.classList.add("disabled");
+        google.script.run
+          .withSuccessHandler(function (e) {
+            M.toast({ html: "Reports Created. Proceed to next step." });
+            var steps = document.querySelector(".collapsible");
+            var instance = M.Collapsible.getInstance(steps);
+            instance.close(1);
+            instance.open(2);
+          })
+          .generateReports(grLevel.value);
+      });
+      expBtn.addEventListener("click", function () {
+        google.script.run.withSuccessHandler(function () {}).showPicker();
+      });
+    </script>
+  </body>
 </html>

@@ -8,26 +8,32 @@
  *     running in, inspect e.authMode.
  */
 function onOpen(e) {
-    SpreadsheetApp.getUi().createAddonMenu()
-        .addItem('Launch', 'showSidebar')
-        //.addItem('Analyze Class', 'analyzeClass')
-        .addToUi();
-  }
-  /**
-   * Runs when the add-on is installed.
-   *
-   * @param {object} e The event parameter for a simple onInstall trigger. To
-   *     determine which authorization mode (ScriptApp.AuthMode) the trigger is
-   *     running in, inspect e.authMode. (In practice, onInstall triggers always
-   *     run in AuthMode.FULL, but onOpen triggers may be AuthMode.LIMITED or
-   *     AuthMode.NONE).
-   */
-  function onInstall(e) {
-    onOpen(e);
-  }
-  
-  function showSidebar() {
-    var ui = HtmlService.createHtmlOutputFromFile('sidebar')
-        .setTitle('ToM Tool 2');
-    SpreadsheetApp.getUi().showSidebar(ui);
-  }
+  SpreadsheetApp.getUi()
+    .createAddonMenu()
+    .addItem("Launch", "showSidebar")
+    //.addItem('Analyze Class', 'analyzeClass')
+    .addToUi();
+}
+/**
+ * Runs when the add-on is installed.
+ *
+ * @param {object} e The event parameter for a simple onInstall trigger. To
+ *     determine which authorization mode (ScriptApp.AuthMode) the trigger is
+ *     running in, inspect e.authMode. (In practice, onInstall triggers always
+ *     run in AuthMode.FULL, but onOpen triggers may be AuthMode.LIMITED or
+ *     AuthMode.NONE).
+ */
+function onInstall(e) {
+  onOpen(e);
+}
+
+/**
+ * Runs when user clicks the menu item added in onOpen() function above
+ *
+ */
+function showSidebar() {
+  var ui = HtmlService.createHtmlOutputFromFile("sidebar").setTitle(
+    "ToM Tool 2"
+  );
+  SpreadsheetApp.getUi().showSidebar(ui);
+}
