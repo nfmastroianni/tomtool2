@@ -25,4 +25,4 @@ At this time, [this add-on](https://workspace.google.com/u/0/marketplace/app/too
 5. Click the Add-on
 6. Click Install button
 
-<img src="https://www.longbranch.k12.nj.us/cms/lib/NJ01001766/Centricity/Template/GlobalAssets/images///logos/LongBranch.png" width="75px" alt="Green Wave Logo for Long Branch Public Schools"> [Long Branch Public Schools](https://www.longbranch.k12.nj.us/) "Where Children Matter Most" #wcmm
+<img src="https://www.longbranch.k12.nj.us/cms/lib/NJ01001766/Centricity/Template/GlobalAssets/images///logos/LBPS%20Seal%20-%20Together%20We%20Can.png" width="75px" alt="Green Wave Logo for Long Branch Public Schools"> [Long Branch Public Schools](https://www.longbranch.k12.nj.us/) "Together We Can" #juntosPodemos
