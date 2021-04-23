@@ -11,7 +11,7 @@ function onOpen(e) {
   SpreadsheetApp.getUi()
     .createAddonMenu()
     .addItem("Launch", "showSidebar")
-    //.addItem('Analyze Class', 'analyzeClass')
+    .addItem("Data Analysis", "buildAnalysisSheet")
     .addToUi();
 }
 /**

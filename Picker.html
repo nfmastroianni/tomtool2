@@ -68,7 +68,12 @@
         if (pickerApiLoaded && token) {
           // var DocsUploadView = new google.picker.DocsUploadView();
           // DocsUploadView.setIncludeFolders(true);
-
+          function getOrigin() {
+            var url = google.script.host.origin;
+            return url.substr(url.length - 1) === "/"
+              ? url.substr(0, url.length - 1)
+              : url;
+          }
           var DocsView = new google.picker.DocsView();
           DocsView.setMimeTypes("application/vnd.google-apps.folder");
           //DocsView.setEnableDrives(true);
@@ -90,7 +95,7 @@
             .setOAuthToken(token)
             .setDeveloperKey(DEVELOPER_KEY)
             .setCallback(pickerCallback)
-            .setOrigin(google.script.host.origin)
+            .setOrigin(getOrigin())
             // Instruct Picker to fill the dialog, minus 2 pixels for the border.
             .setSize(
               DIALOG_DIMENSIONS.width - 10,
