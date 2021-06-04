@@ -16,7 +16,15 @@ function buildAnalysisSheet() {
   valRange.merge();
   const dataSheet = ss.getSheetByName("studentResults");
   const lastDataRow = dataSheet.getLastRow();
-  let dataHeadersRange = dataSheet.getRange("I1:AE1");
+  const headerRow = dataSheet
+    .getRange(1, 1, 1, dataSheet.getLastColumn())
+    .getValues();
+  const isFirstRating = (element) => element.includes("(Language)");
+  const firstRatingIndex = headerRow[0].findIndex(isFirstRating);
+  const alphabet = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+  let dataHeadersRange = dataSheet.getRange(
+    `${alphabet.charAt(firstRatingIndex)}1:AE1`
+  );
   let rule = SpreadsheetApp.newDataValidation()
     .requireValueInRange(dataHeadersRange)
     .build();
