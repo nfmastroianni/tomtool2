@@ -11,7 +11,8 @@ function onOpen(e) {
   SpreadsheetApp.getUi()
     .createAddonMenu()
     .addItem("Launch", "showSidebar")
-    .addItem("Data Analysis", "buildAnalysisSheet")
+    .addItem("3yo - Data Analysis", "buildAnalysisSheet3")
+    .addItem("4yo - Data Analysis", "buildAnalysisSheet4")
     .addToUi();
 }
 /**
@@ -32,8 +33,7 @@ function onInstall(e) {
  *
  */
 function showSidebar() {
-  var ui = HtmlService.createHtmlOutputFromFile("sidebar").setTitle(
-    "ToM Tool 2"
-  );
+  var ui =
+    HtmlService.createHtmlOutputFromFile("sidebar").setTitle("ToM Tool 2");
   SpreadsheetApp.getUi().showSidebar(ui);
 }
