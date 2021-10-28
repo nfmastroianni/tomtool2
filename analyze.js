@@ -507,38 +507,46 @@ const data = [
         title: "ELA 5-8 (Reading Literature)",
         description: "Reading: Literature",
         ratings: {
+          Emerging: {
+            "3F": "below",
+            "4F": "below",
+          },
           "Answers are not related to question": {
             "3F": "below",
             "4F": "below",
           },
-          "Points gestures to respond": {
-            "3F": "below",
-            "4F": "below",
-          },
-          "Answers questions independently": {
+          "Points gestures needs prompts to respond": {
             "3F": "meeting",
             "4F": "below",
           },
-          "Discusses several things about the book": {
+          "Connects to own experiences": {
             "3F": "exceeding",
             "4F": "meeting",
           },
-          "Paraphrases or recounts story events": {
+          "Retells some events from familiar story w/ prompt": {
+            "3F": "exceeding",
+            "4F": "exceeding",
+          },
+          "Retells part of event in sequence using text/pics": {
             "3F": "exceeding",
             "4F": "exceeding",
           },
         },
       },
       {
-        title: "ELA 5-8 (Phonological Awareness)",
+        title: "ELA 5-8 (Phonological Awareness Rhyming)",
         description: "Phonological Awareness Rhyming",
         ratings: {
-          "Participates in rhyming activities with group": {
+          Emerging: {
             "3F": "below",
             "4F": "below",
           },
-          "Rhyme Recognition": {
+          "Participates in rhyming activities with group": {
             "3F": "meeting",
+            "4F": "below",
+          },
+          "Rhyme Recognition": {
+            "3F": "exceeding",
             "4F": "below",
           },
           "Rhyme Judgement": {
@@ -556,10 +564,14 @@ const data = [
         },
       },
       {
-        title: "ELA 5-8 (Phonemic Awareness)",
+        title: "ELA 5-8 (Phonemic Awareness Sounds)",
         description:
           "Phonemic Awareness Beginning/Ending Sounds/Blending Sounds",
         ratings: {
+          Emerging: {
+            "3F": "below",
+            "4F": "below",
+          },
           "Repeats Mimics alliterations": {
             "3F": "meeting",
             "4F": "below",
@@ -595,11 +607,11 @@ const data = [
             "4F": "below",
           },
           "Identifies between pictures and words": {
-            "3F": "below",
+            "3F": "meeting",
             "4F": "below",
           },
           "Demonstrates directionality": {
-            "3F": "meeting",
+            "3F": "exceeding",
             "4F": "below",
           },
           "Difference between letters and words": {
@@ -617,25 +629,29 @@ const data = [
         title: "ELA 9-12 (Reading Informational)",
         description: "Reading:Informational",
         ratings: {
+          Emerging: {
+            "3F": "below",
+            "4F": "below",
+          },
           "Points or gestures to what is interesting": {
             "3F": "below",
             "4F": "below",
           },
           "Gives the name of something from the book": {
-            "3F": "below",
-            "4F": "below",
-          },
-          "Connects to own experiences": {
             "3F": "meeting",
             "4F": "below",
           },
+          "Answers comprehension question independently": {
+            "3F": "exceeding",
+            "4F": "meeting",
+          },
           "Describes a fact from the text with detail": {
             "3F": "exceeding",
-            "4F": "below",
+            "4F": "exceeding",
           },
           "Remembers more than one fact from the book with de": {
             "3F": "exceeding",
-            "4F": "meeting",
+            "4F": "exceeding",
           },
         },
       },
@@ -643,21 +659,25 @@ const data = [
         title: "ELA 9-12 (Vocabulary)",
         description: "Vocabulary",
         ratings: {
+          Emerging: {
+            "3F": "below",
+            "4F": "below",
+          },
           "Shows understanding of everyday words": {
             "3F": "below",
             "4F": "below",
           },
           "Shows understanding of new word by acting it out": {
-            "3F": "below",
-            "4F": "below",
-          },
-          "Uses the word in story lab to describe": {
             "3F": "meeting",
             "4F": "below",
           },
-          "Applies the word in new situation": {
+          "Uses the word in story lab to describe": {
             "3F": "exceeding",
             "4F": "meeting",
+          },
+          "Applies the word in new situation": {
+            "3F": "exceeding",
+            "4F": "exceeding",
           },
           "Uses synonyms for the word as well as examples to": {
             "3F": "exceeding",
@@ -678,26 +698,26 @@ const data = [
             "4F": "below",
           },
           Message: {
-            "3F": "below",
-            "4F": "below",
-          },
-          Lines: {
             "3F": "meeting",
             "4F": "below",
           },
-          IS: {
+          Lines: {
+            "3F": "exceeding",
+            "4F": "below",
+          },
+          "Initial Sounds": {
             "3F": "exceeding",
             "4F": "meeting",
           },
-          ES: {
+          "Ending Sounds": {
             "3F": "exceeding",
             "4F": "exceeding",
           },
-          MS: {
+          "Medial Sounds": {
             "3F": "exceeding",
             "4F": "exceeding",
           },
-          AP: {
+          "Alphabetic Principle": {
             "3F": "exceeding",
             "4F": "exceeding",
           },
@@ -707,16 +727,16 @@ const data = [
         title: "ELA 9-12 (Graphics Practice)",
         description: "Graphics Practice",
         ratings: {
-          "Holds marker with fist or whole hand jabs the boar": {
+          "Holds marker with fist or whole hand jabs": {
             "3F": "below",
             "4F": "below",
           },
           "Motor movement for Level 1 figures": {
-            "3F": "below",
+            "3F": "meeting",
             "4F": "below",
           },
           "Motor movement for Level 2-3 figures": {
-            "3F": "meeting",
+            "3F": "exceeding",
             "4F": "below",
           },
           "Motor movement for Level 4-5 figures": {
@@ -734,89 +754,75 @@ const data = [
   {
     Math: [
       {
-        title: "Math 1-2 (Counting Objects)",
+        title: "Math (Counting Objects)",
         description: "Counting & Counting Objects",
         ratings: {
-          "Counts with or without correct number order": {
+          Emerging: {
             "3F": "below",
             "4F": "below",
           },
-          "Counts to 5 and tells how many": {
+          "Verbally counts to 5": {
             "3F": "below",
             "4F": "below",
           },
-          "Counts to 10 and tells how many": {
+          "Verbally counts to 10": {
             "3F": "meeting",
             "4F": "below",
           },
-          "Counts up to 20 and tells how many": {
+          "1-1 corresp up to 5": {
+            "3F": "exceeding",
+            "4F": "below",
+          },
+          "Accurately counts up to 5 answers how many": {
+            "3F": "exceeding",
+            "4F": "below",
+          },
+          "Accurately counts up to 10 answers how many": {
+            "3F": "exceeding",
+            "4F": "below",
+          },
+          "Recognizes/names written numbers up to 10": {
             "3F": "exceeding",
             "4F": "meeting",
           },
-          "Compare sets of objects to 10": {
-            "3F": "exceeding",
-            "4F": "exceeding",
-          },
-          "Add and subtract up to 5": {
+          "Understands nums as symbols begins to write 0-10": {
             "3F": "exceeding",
             "4F": "exceeding",
           },
         },
       },
       {
-        title: "Math 1-2 (Recognizing Numbers)",
-        description: "Recognizing Numbers",
-        ratings: {
-          "Recognizes numbers in the environment": {
-            "3F": "below",
-            "4F": "below",
-          },
-          "Recognizes numerals 1-5": {
-            "3F": "below",
-            "4F": "below",
-          },
-          "Recognizes and writes numbers 1-5": {
-            "3F": "meeting",
-            "4F": "below",
-          },
-          "Recognizes and writes numbers 1-10": {
-            "3F": "exceeding",
-            "4F": "meeting",
-          },
-          "Recognizes and writes numerals 11-20": {
-            "3F": "exceeding",
-            "4F": "exceeding",
-          },
-        },
-      },
-      {
-        title: "Math 3-5 (Shapes)",
+        title: "Math (Shapes)",
         description: "Geometry/Shapes",
         ratings: {
-          "Begins to identify basic shapes": {
+          Emerging: {
             "3F": "below",
             "4F": "below",
           },
-          "Identifies and can draw  basic shapes": {
-            "3F": "below",
-            "4F": "below",
-          },
-          "Use materials to create 2D shapes": {
+          "Recognizes and names shapes": {
             "3F": "meeting",
             "4F": "below",
           },
-          "Recognizes and names 3D shapes": {
+          "Recognizes shapes same when rotated": {
+            "3F": "exceeding",
+            "4F": "below",
+          },
+          "Uses materials to create 2D shapes": {
             "3F": "exceeding",
             "4F": "meeting",
           },
-          "Understands the connection b/w 3D and 2D shapes": {
+          "Manipulates compares discusses 2D shapes": {
+            "3F": "exceeding",
+            "4F": "exceeding",
+          },
+          "Manipulates compares discusses 3D shapes": {
             "3F": "exceeding",
             "4F": "exceeding",
           },
         },
       },
       {
-        title: "Math 3-5 (Sorting)",
+        title: "Math (Sorting)",
         description: "Classification/Sorting",
         ratings: {
           "Matches objects that are identical": {
@@ -838,15 +844,19 @@ const data = [
         },
       },
       {
-        title: "Math 3-5 (Measurement)",
+        title: "Math (Measurement)",
         description: "Measurement",
         ratings: {
-          "Begins to use concepts of measurement for puzzles": {
+          Emerging: {
             "3F": "below",
             "4F": "below",
           },
-          "Compares objects &amp; uses comparative language": {
+          "Begins to use concepts of measurement for puzzles": {
             "3F": "meeting",
+            "4F": "below",
+          },
+          "Compares objects &amp; uses comparative language": {
+            "3F": "exceeding",
             "4F": "below",
           },
           "Orders 5 objects from shortest to longest": {
