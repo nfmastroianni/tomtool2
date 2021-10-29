@@ -92,9 +92,9 @@ function buildAnalysisSheet3() {
     let belowCount, meetingCount, exceedingCount;
     belowCount = meetingCount = exceedingCount = 0;
     skillData.forEach((rating) => {
-      if (skill.ratings[`${rating}`]["4F"] === "below") {
+      if (skill.ratings[`${rating}`]["3F"] === "below") {
         belowCount += 1;
-      } else if (skill.ratings[`${rating}`]["4F"] === "meeting") {
+      } else if (skill.ratings[`${rating}`]["3F"] === "meeting") {
         meetingCount += 1;
       } else {
         exceedingCount += 1;
@@ -129,9 +129,11 @@ function buildAnalysisSheet3() {
     let belowCount, meetingCount, exceedingCount;
     belowCount = meetingCount = exceedingCount = 0;
     skillData.forEach((rating) => {
-      if (skill.ratings[`${rating}`]["4F"] === "below") {
+      Logger.log(`Rating: ${rating}`);
+      Logger.log(`Skill: ${JSON.stringify(skill.ratings)}`);
+      if (skill.ratings[`${rating}`]["3F"] === "below") {
         belowCount += 1;
-      } else if (skill.ratings[`${rating}`]["4F"] === "meeting") {
+      } else if (skill.ratings[`${rating}`]["3F"] === "meeting") {
         meetingCount += 1;
       } else {
         exceedingCount += 1;
@@ -490,16 +492,16 @@ const data = [
             "4F": "below",
           },
           Phrases: {
-            "3F": "below",
-            "4F": "below",
-          },
-          Sentences: {
             "3F": "meeting",
             "4F": "below",
           },
-          Stories: {
+          Sentences: {
             "3F": "exceeding",
             "4F": "meeting",
+          },
+          Stories: {
+            "3F": "exceeding",
+            "4F": "exceeding",
           },
         },
       },
@@ -541,7 +543,7 @@ const data = [
             "3F": "below",
             "4F": "below",
           },
-          "Participates in rhyming activities with group": {
+          "Rhyme Exposure: Joins in songs and games": {
             "3F": "meeting",
             "4F": "below",
           },
@@ -576,11 +578,11 @@ const data = [
             "3F": "meeting",
             "4F": "below",
           },
-          "Recognize beginning sounds of words": {
+          "Recognition: decides if beginning sounds match": {
             "3F": "exceeding",
             "4F": "below",
           },
-          "Judgement of beginning sounds": {
+          "Judgement: beginning sounds": {
             "3F": "exceeding",
             "4F": "below",
           },
@@ -754,6 +756,89 @@ const data = [
   {
     Math: [
       {
+        title: "Math (Shapes)",
+        description: "Geometry/Shapes",
+        ratings: {
+          Emerging: {
+            "3F": "below",
+            "4F": "below",
+          },
+          "Recognizes and names shapes": {
+            "3F": "meeting",
+            "4F": "below",
+          },
+          "Recognizes shapes same when rotated": {
+            "3F": "exceeding",
+            "4F": "below",
+          },
+          "Uses materials to create 2D shapes": {
+            "3F": "exceeding",
+            "4F": "meeting",
+          },
+          "Manipulates compares discusses 2D shapes": {
+            "3F": "exceeding",
+            "4F": "exceeding",
+          },
+          "Manipulates compares discusses 3D shapes": {
+            "3F": "exceeding",
+            "4F": "exceeding",
+          },
+        },
+      },
+
+      {
+        title: "Math (Sorting)",
+        description: "Classification/Sorting",
+        ratings: {
+          Emerging: {
+            "3F": "below",
+            "4F": "below",
+          },
+          "Matches objects that are identical": {
+            "3F": "meeting",
+            "4F": "below",
+          },
+          "Sorts objects into small groups by 1 attribute": {
+            "3F": "exceeding",
+            "4F": "meeting",
+          },
+          "Reclassifies already sorted objects by attribute": {
+            "3F": "exceeding",
+            "4F": "exceeding",
+          },
+          "Classifies/compares subgroups within larger groups": {
+            "3F": "exceeding",
+            "4F": "exceeding",
+          },
+        },
+      },
+      {
+        title: "Math (Measurement)",
+        description: "Measurement",
+        ratings: {
+          Emerging: {
+            "3F": "below",
+            "4F": "below",
+          },
+          "Begins to use concepts of measurement for puzzles": {
+            "3F": "meeting",
+            "4F": "below",
+          },
+          "Compares objects &amp; uses comparative language": {
+            "3F": "exceeding",
+            "4F": "below",
+          },
+          "Orders 5 objects from shortest to longest": {
+            "3F": "exceeding",
+            "4F": "meeting",
+          },
+          "Measures using a common base describes attribute": {
+            "3F": "exceeding",
+            "4F": "exceeding",
+          },
+        },
+      },
+      {
         title: "Math (Counting Objects)",
         description: "Counting & Counting Objects",
         ratings: {
@@ -786,84 +871,6 @@ const data = [
             "4F": "meeting",
           },
           "Understands nums as symbols begins to write 0-10": {
-            "3F": "exceeding",
-            "4F": "exceeding",
-          },
-        },
-      },
-      {
-        title: "Math (Shapes)",
-        description: "Geometry/Shapes",
-        ratings: {
-          Emerging: {
-            "3F": "below",
-            "4F": "below",
-          },
-          "Recognizes and names shapes": {
-            "3F": "meeting",
-            "4F": "below",
-          },
-          "Recognizes shapes same when rotated": {
-            "3F": "exceeding",
-            "4F": "below",
-          },
-          "Uses materials to create 2D shapes": {
-            "3F": "exceeding",
-            "4F": "meeting",
-          },
-          "Manipulates compares discusses 2D shapes": {
-            "3F": "exceeding",
-            "4F": "exceeding",
-          },
-          "Manipulates compares discusses 3D shapes": {
-            "3F": "exceeding",
-            "4F": "exceeding",
-          },
-        },
-      },
-      {
-        title: "Math (Sorting)",
-        description: "Classification/Sorting",
-        ratings: {
-          "Matches objects that are identical": {
-            "3F": "below",
-            "4F": "below",
-          },
-          "Sorts objects into small groups by 1 attribute": {
-            "3F": "meeting",
-            "4F": "below",
-          },
-          "Reclassifies already sorted objects by attribute": {
-            "3F": "exceeding",
-            "4F": "meeting",
-          },
-          "Classifies/compares subgroups within larger groups": {
-            "3F": "exceeding",
-            "4F": "exceeding",
-          },
-        },
-      },
-      {
-        title: "Math (Measurement)",
-        description: "Measurement",
-        ratings: {
-          Emerging: {
-            "3F": "below",
-            "4F": "below",
-          },
-          "Begins to use concepts of measurement for puzzles": {
-            "3F": "meeting",
-            "4F": "below",
-          },
-          "Compares objects &amp; uses comparative language": {
-            "3F": "exceeding",
-            "4F": "below",
-          },
-          "Orders 5 objects from shortest to longest": {
-            "3F": "exceeding",
-            "4F": "meeting",
-          },
-          "Measures using a common base describes attribute": {
             "3F": "exceeding",
             "4F": "exceeding",
           },

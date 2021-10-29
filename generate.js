@@ -170,9 +170,9 @@ function fillELA(record, sheet) {
     "ELA_5-8_(Phonemic_Awareness_Sounds)": {
       Emerging: "A56",
       "Repeats Mimics alliterations": "C56",
-      "Recognize beginning sounds of words": "E56",
-      "Judgement of beginning sounds": "G56",
-      "Isolate beginning sounds in words": "I56",
+      "Recognition: decides if beginning sounds match": "E56",
+      "Judgement: beginning sounds": "G56",
+      "Isolates beginning sounds in words": "I56",
       "Isolates ending sounds in words": "K56",
       "Verbally blends one syllable words": "M56",
     },
@@ -261,17 +261,17 @@ function fillMath(record, sheet) {
     },
     "Math_(Sorting)": {
       Emerging: "C95",
-      "Begins to use concepts of measurement for puzzles": "E95",
+      "Matches objects that are identical": "E95",
       "Sorts objects into small groups by 1 attribute": "G95",
       "Reclassifies already sorted objects by attribute": "I95",
       "Classifies/compares subgroups within larger groups": "K95",
     },
     "Math_(Measurement)": {
-      Emerging: "C98",
-      "Begins to use concepts of measurement for puzzles": "E98",
-      "Compares objects & uses comparative language": "G98",
-      "Orders 5 objects from shortest to longest": "I98",
-      "Measures using a common base describes attribute": "K98",
+      Emerging: "C99",
+      "Begins to use concepts of measurement for puzzles": "E99",
+      "Compares objects & uses comparative language": "G99",
+      "Orders 5 objects from shortest to longest": "I99",
+      "Measures using a common base describes attribute": "K99",
     },
   };
   Object.entries(math).forEach(function ([key, value]) {
